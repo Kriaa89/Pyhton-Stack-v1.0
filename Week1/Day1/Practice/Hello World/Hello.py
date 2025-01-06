@@ -3,10 +3,10 @@ print("Hello World")
 # 2. print "Hello Noelle!" with the name in a variable
 name = "Noelle"
 print("hello", name,"!")	# with a comma
-print("Hello"+ name+ "!")	# with a +
+print("Hello" +   name   + "!")	# with a +
 # 3. print "Hello 42!" with the number in a variable
 name = 42
-print("hello", 42)	# with a comma
+print("hello", name)	# with a comma
 # with a +	-- this one should give us an error!
 print("Hello"+ str(name) + "!")	
 # 4. print "I love to eat sushi and pizza." with the foods in variables
