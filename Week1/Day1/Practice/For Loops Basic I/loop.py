@@ -28,6 +28,6 @@ for i in range(2018, 0, -4):
 lowNum = 2
 highNum = 9 
 mult  =3 
-for i in range(lowNum, highNum+1): 
+for i in range(lowNum, highNum+1): # we add 1 because the range of the highNum is exclusive
     if i % mult == 0:
         print(i)
