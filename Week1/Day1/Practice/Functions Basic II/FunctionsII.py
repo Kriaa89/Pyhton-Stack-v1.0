@@ -7,3 +7,10 @@ def Countdown(num):
     for i in range(num, -1, -1):
         list.append(i)
         return list
+    
+
+# Print and Return - Create a function that will receive a list with two numbers. Print the first value and return the second.
+# Example: print_and_return([1,2]) should print 1 and return 2
+
+def PrintAndRetrun(list):
+    
