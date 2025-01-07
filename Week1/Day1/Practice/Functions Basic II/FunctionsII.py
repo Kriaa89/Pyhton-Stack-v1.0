@@ -51,3 +51,5 @@ def length_and_value(size, value):
 # test the function
 result = length_and_value(4,7)
 print(result)
+result = length_and_value(6,2)
+print(result)
