@@ -1,3 +1,14 @@
+# For Loops Basic I
+lowNum = 2
+highNum = 9
+mult = 3
+for i in range(lowNum, highNum + 1):
+if i % mult == 0:
+print(i)
+#####
+
+
+
 - **Explanation**: This loop prints integers from `lowNum` to `highNum` that are multiples of `mult`.
 - **Helpful Link**: [Python Variables](https://www.w3schools.com/python/python_variables.asp)
 
