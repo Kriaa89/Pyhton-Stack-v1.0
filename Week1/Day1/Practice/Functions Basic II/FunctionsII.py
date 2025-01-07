@@ -11,6 +11,7 @@ def Countdown(num):
 
 # Print and Return - Create a function that will receive a list with two numbers. Print the first value and return the second.
 # Example: print_and_return([1,2]) should print 1 and return 2
-
-def PrintAndRetrun(list):
-    
+# steps 
+def print_and_return(numbers):
+    print(numbers[0])
+    return numbers[1]
