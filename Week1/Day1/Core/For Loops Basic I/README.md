@@ -1,6 +1,6 @@
 This section contains basic exercises to understand and practice Python for loops. Below are the exercises included in the loop.py file:
 
-Basic - Print all integers from 0 to 150
+Basic - Print all integers from 0 to 150  
 
 Python
 for i in range(151):
