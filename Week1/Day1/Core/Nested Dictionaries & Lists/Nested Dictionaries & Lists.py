@@ -90,4 +90,4 @@ def printInfo(some_dict):
         for value in some_dict[key]:
             print(value)
 # test the function
-printInfo(dojo)
+printInfo(dojo) 
