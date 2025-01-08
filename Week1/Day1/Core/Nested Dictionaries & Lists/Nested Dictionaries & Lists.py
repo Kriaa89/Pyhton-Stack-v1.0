@@ -67,3 +67,11 @@ def iterateDictionary2(key_name, students):
         print(keys[key_name])
 # test the function 
 iterateDictionary2('first_name', students)
+
+# last_name 
+key_name = 'last_name'
+def iterateDictionary2(key_name, students):
+    for keys in students:
+        print(keys[key_name])
+# test the function 
+iterateDictionary2('last_name', students)
