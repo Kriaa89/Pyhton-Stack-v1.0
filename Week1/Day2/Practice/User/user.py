@@ -11,6 +11,7 @@ class User:
         print(f" Hello, my name is {self.first_name} {self.last_name}.")
         print(f"my email is {self.email}")
         print(f"I'm {self.age} old.")
+        print(f"I'm {self.age}")
 # enroll(self) - Have this method change the user's member status to True and set their gold card points to 200.
     def enroll(self):
         self.is_rewards_member = True
@@ -31,3 +32,4 @@ user2 = User(
     "yessine", "Kriaa", "yessinekriaa@gmail.com", 20
 )
 user2.spend_points(80)
+user2.display_info()
