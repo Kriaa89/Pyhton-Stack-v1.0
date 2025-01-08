@@ -56,3 +56,13 @@ def iterateDictionary(students):
         print(f"last_name - {keys['last_name']}  first_name - {keys['first_name']}")
 # test the function
 iterateDictionary(students)
+
+
+# 3.Get Values From a List of Dictionaries
+# Create a function iterateDictionary2(key_name, some_list) that, given a list of dictionaries and a key name, 
+# the function prints the value stored in that key for each dictionary. For example, iterateDictionary2('first_name', students) should output:
+def iterateDictionary2(key_name, students):
+    for keys in students:
+        print(keys[key_name])
+# test the function 
+iterateDictionary2('first_name', students)
