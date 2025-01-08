@@ -66,4 +66,5 @@ def printInfo(some_dict):
         print(f" {len(some_dict[key])}")
         for value in some_dict[key]:
             print(value)
-        
+# test the function
+printInfo(dojo)
