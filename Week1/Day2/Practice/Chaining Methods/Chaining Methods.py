@@ -25,13 +25,9 @@ class User:
         self.gold_card_points -= amount
         return self
 
-user=User(
-    "ali","hajji","alihajji@gmail.com", 20 
-)
+user=User("ali","hajji","alihajji@gmail.com", 20 )
 user.display_info().enroll().spend_points(50).display_info()
 
 
-user2 = User(
-    "yessine", "Kriaa", "yessinekriaa@gmail.com", 20
-)
+user2 = User("yessine", "Kriaa", "yessinekriaa@gmail.com", 20)
 user2.enroll().spend_points(80).display_info()
