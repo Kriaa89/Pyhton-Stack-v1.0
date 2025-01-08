@@ -48,3 +48,11 @@ students = [
 def iterateDictionary(students):
     for key in students:
         print(key)
+# test the function 
+iterateDictionary(students)
+# bonus to get them to appear exactly as below!)
+def iterateDictionary(students):
+    for keys in students:
+        print(f"last_name - {keys['last_name']}  first_name - {keys['first_name']}")
+# test the function
+iterateDictionary(students)
