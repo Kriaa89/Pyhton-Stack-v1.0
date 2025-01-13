@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+}
+.box_container{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+.boxes {
+    height: 100px;
+    width: 100px;
+    border: 2px solid black;
+    display: inline-block;
+
+}
