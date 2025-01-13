@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great number Game</title>
+</head>
+<body>
+    <h1>Guess the Number!</h1>
+    <p>i'm thinking of number between 1 to 100</p>
+    <p>take guess</p>
+    {% if session['result'] %}
+        <h2>{{ session['result'] }}</h2>
+    {% endif %}
+    <form action="/guess" method="post">
+        <label for="guess">Enter your guess:</label>
+        <input type="text" name="guess" id="guess" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
