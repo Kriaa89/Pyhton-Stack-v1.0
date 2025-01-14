@@ -1,0 +1,21 @@
+SELECT * FROM users_schema.users;
+INSERT INTO users_schema.users (first_name, last_name, email)  VALUES ("abdallah", "kriaa", 'abdallahkriaa@gmail.com'),("yessine", "kriaa", 'yessinekriaa@gmail.com'), ("ahmed", "kriaa", 'ahmedkriaa@gmail.com');
+DELETE FROM users_schema.users WHERE id < 5;
+
+
+INSERT INTO users_schema.users (first_name, last_name, email)  VALUES ("abdallah", "kriaa", "abdallahkriaa@gmail.com");
+
+
+DELETE FROM users_schema.users WHERE email='abdallahkriaa@gmail.com';
+
+
+UPDATE users
+SET last_name = 'Pancakes'
+WHERE id = 10;
+
+
+DELETE FROM users
+WHERE id = 22;
+
+SELECT * FROM users
+ORDER BY first_name;
