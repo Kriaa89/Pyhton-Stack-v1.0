@@ -1,0 +1,61 @@
+SELECT * FROM dojos_and_ninjas_schema.dojos;
+
+-- Query: Create 3 new dojos --
+INSERT INTO dojos_and_ninjas_schema.dojos (name, created_at, updated_at) VALUES ('abdallah', NOW(), NOW());
+INSERT INTO dojos_and_ninjas_schema.dojos (name, created_at, updated_at) VALUES ('yessine', NOW(), NOW());
+INSERT INTO dojos_and_ninjas_schema.dojos (name, created_at, updated_at) VALUES ('ahmed', NOW(), NOW());
+
+--  Delete the 3 dojos you just created  --
+DELETE FROM dojos_and_ninjas_schema.dojos WHERE id < 4;
+
+
+--      Create 3 more dojos  -- 
+INSERT INTO dojos_and_ninjas_schema.dojos (name, created_at, updated_at) VALUES ('chrif', NOW(), NOW());
+INSERT INTO dojos_and_ninjas_schema.dojos (name, created_at, updated_at) VALUES ('ghada', NOW(), NOW());
+INSERT INTO dojos_and_ninjas_schema.dojos (name, created_at, updated_at) VALUES ('wael', NOW(), NOW());
+
+
+-- Query: Create 3 ninjas that belong to the first dojo --
+INSERT INTO dojos_and_ninjas_schema.ninjas (first_name, last_name, age, dojo_id, created_at, updated_at) VALUES ('nidhal', 'kriaa', '20', 4, NOW(), NOW());
+INSERT INTO dojos_and_ninjas_schema.ninjas (first_name, last_name, age, dojo_id, created_at, updated_at) VALUES ('mohamed', 'nesrani', '21', 4, NOW(), NOW());
+INSERT INTO dojos_and_ninjas_schema.ninjas (first_name, last_name, age, dojo_id, created_at, updated_at) VALUES ('fedia', 'brahmi', '22', 4, NOW(), NOW());
+
+-- Create 3 ninjas that belong to the second dojo -- 
+INSERT INTO dojos_and_ninjas_schema.ninjas (first_name, last_name, age, dojo_id, created_at, updated_at) VALUES ('zaineb', 'radhwani', '20', 5, NOW(), NOW());
+INSERT INTO dojos_and_ninjas_schema.ninjas (first_name, last_name, age, dojo_id, created_at, updated_at) VALUES ('idriss', 'laabidi', '21', 5, NOW(), NOW());
+INSERT INTO dojos_and_ninjas_schema.ninjas (first_name, last_name, age, dojo_id, created_at, updated_at) VALUES ('chaima', 'abidi', '22', 5, NOW(), NOW());
+
+-- Query: Create 3 ninjas that belong to the third dojo --
+
+INSERT INTO dojos_and_ninjas_schema.ninjas (first_name, last_name, age, dojo_id, created_at, updated_at) VALUES ('mortadha', 'radhwani', '20', 6, NOW(), NOW());
+INSERT INTO dojos_and_ninjas_schema.ninjas (first_name, last_name, age, dojo_id, created_at, updated_at) VALUES ('khalil', 'laabidi', '21', 6, NOW(), NOW());
+INSERT INTO dojos_and_ninjas_schema.ninjas (first_name, last_name, age, dojo_id, created_at, updated_at) VALUES ('nazih', 'abidi', '22', 6, NOW(), NOW());
+
+
+--  Query: Retrieve all the ninjas from the first dojo ---
+SELECT * FROM dojos_and_ninjas_schema.ninjas WHERE dojo_id = 4;
+
+-- Query: Retrieve all the ninjas from the last dojo -- 
+
+SELECT * FROM dojos_and_ninjas_schema.ninjas WHERE dojo_id = 6;
+
+
+-- Query: Retrieve the last ninja's dojo --
+
+SELECT dojos_and_ninjas_schema.dojos.* FROM dojos JOIN ninjas ON dojos.id = ninjas.dojo_id ORDER BY ninjas.id DESC LIMIT 1;
+ -- Query: Use a JOIN to retrieve the ninja with id 6 as well as the data from its dojo. Be sure to do this in one query using a join statement. --
+SELECT ninjas.*, dojos.*
+FROM ninjas
+JOIN dojos ON ninjas.dojo_id = dojos.id
+WHERE ninjas.id = 6;
+-- Query: Use a JOIN to retrieve all the ninjas as well as that ninja's dojo, note, you will see repeated data on dojos as a dojo can have many ninjas! --
+
+SELECT ninjas.*, dojos.* 
+FROM ninjas
+JOIN dojos ON ninjas.dojo_id = dojos.id
+
+
+
+
+
+
