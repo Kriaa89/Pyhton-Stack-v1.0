@@ -41,3 +41,9 @@ def update_user(id):
     }
     UserCrud.update(data)
     return redirect('/')
+
+# this route will show the user's information
+@app.route('/users/show/<int: id>')
+def show_user(id):
+    user = UserCrud.get_one(id)
+    return render_template('show_users.html', user=user)

@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="user">
-        <h1>User {{ user.id }}</h1>
-        <p>Full name: {{user.first_name}} {{user.last_name}}</p>
-        <p>Email: {{ user.email }}</p>
-        <p>Created On: {{ user.created_at }}</p>
-        <p>Last Updated On {{ user.updated_at }}</p>
-    </div>
-    <div>
-        <a href="">Edit</a> | <a href="">Delete</a>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h1>User {{ user.id }}</h1>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Full name: {{user.first_name}} {{user.last_name}}</p>
+                <p class="card-text">Email: {{ user.email }}</p>
+                <p class="card-text">Created On: {{ user.created_at }}</p>
+                <p class="card-text">Last Updated On {{ user.updated_at }}</p>
+            </div>
+        </div>
     </div>
     
 </body>

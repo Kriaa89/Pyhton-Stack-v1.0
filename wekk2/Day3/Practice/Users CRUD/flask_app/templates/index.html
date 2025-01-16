@@ -27,7 +27,7 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.created_at }}</td>
                     <td>
-                        <a href="" class="btn btn-info btn-sm">Show</a>
+                        <a href="/users/show/{{ user.id }}" class="btn btn-info btn-sm">Show</a>
                         <a href="/users/edit/{{ user.id }}" class="btn btn-warning btn-sm">Edit</a>
                         <a href="" class="btn btn-danger btn-sm">Delete</a>
                     </td>
