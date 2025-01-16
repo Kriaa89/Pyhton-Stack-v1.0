@@ -1,3 +1,5 @@
+# in the user.py file we will create a class that will be used to interact with the database
+# and we import the connectToMySQL function from the flask_app.config
 from flask_app.config.mysqlconnection import connectToMySQL
 class User:
     DB = 'users_schema'
