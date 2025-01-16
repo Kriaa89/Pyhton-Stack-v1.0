@@ -58,7 +58,7 @@ WHERE favorits.user_id = 3;
 SELECT users.*
 FROM users
 JOIN favorits ON users.id = favorits.user_id
-WHERE favorits.book_id = 5;
+WHERE favorits.book_id = 5;friendships
 
 
 
