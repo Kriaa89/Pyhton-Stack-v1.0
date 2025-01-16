@@ -43,7 +43,13 @@ def update_user(id):
     return redirect('/')
 
 # this route will show the user's information
-@app.route('/users/show/<int: id>')
+@app.route('/users/show/<int:id>')
 def show_user(id):
     user = UserCrud.get_one(id)
     return render_template('show_users.html', user=user)
+
+# this route will delete the user from the database
+@app.route('/users/delete/<int:id>')
+def delete_user(id):
+    UserCrud.delete_user(id)
+    return redirect('/')

@@ -27,7 +27,7 @@ class UserCrud:
     def update(cls, data):
         query = "UPDATE users SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s WHERE id = %(id)s;"
         return connectToMySQL(cls.DB).query_db(query, data)
-    
+# this method will be used when we need to get one user from the database
     @classmethod
     def get_one(cls, user_id):
         query = "SELECT * FROM users WHERE id = %(id)s;"
@@ -36,3 +36,12 @@ class UserCrud:
         }
         results = connectToMySQL(cls.DB).query_db(query, data)
         return cls(results[0])
+# this method will be used when we need to delete a user from the database
+    @classmethod
+    def delete_user(cls, user_id):
+        query = "DELETE FROM users WHERE id = %(id)s;"
+        data = {
+            'id': user_id
+        }
+        return connectToMySQL(cls.DB).query_db(query, data)
+        
