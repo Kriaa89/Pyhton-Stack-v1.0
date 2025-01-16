@@ -25,7 +25,19 @@ def create_user():
     return redirect('/')
 
 # this route will allow us to edit the data of the user 
-@app.route('/users/edit/<int:id>', methods=['GET'])
+@app.route('/users/edit/<int:id>')
 def edit_user(id):
     user=UserCrud.get_one(id)
     return render_template("edit_user.html", user=user)
+
+
+@app.route('/users/updates/<int:id>', methods=['POST'])
+def update_user(id):
+    data = {
+        'id': id,
+        'first_name': request.form['first_name'],
+        'last_name': request.form['last_name'],
+        'email': request.form['email']
+    }
+    UserCrud.update(data)
+    return redirect('/')
