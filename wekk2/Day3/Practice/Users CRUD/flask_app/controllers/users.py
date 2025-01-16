@@ -12,3 +12,20 @@ def index():
 @app.route('/users/new', methods=['GET'])
 def new_user():
     return render_template('add_user.html')
+
+# this route will create a new user
+@app.route('/users/create', methods=['POST'])
+def create_user():
+    data = {
+        'first_name': request.form['first_name'],
+        'last_name': request.form['last_name'],
+        'email': request.form['email']
+    }
+    UserCrud.save(data)
+    return redirect('/')
+
+# this route will allow us to edit the data of the user 
+@app.route('/users/edit/<int:id>', methods=['GET'])
+def edit_user():
+    UserCrud.update(request.form)
+    return redirect('/')

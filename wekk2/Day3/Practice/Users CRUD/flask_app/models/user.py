@@ -20,5 +20,10 @@ class UserCrud:
     @classmethod
     def save(cls, data):
         query = "INSERT INTO users(first_name, last_name, email, created_at, updated_at) VALUES(%(first_name)s, %(last_name)s, %(email)s, NOW(), NOW());"
-        results = connectToMySQL(cls.DB).query_db(query, data)
-        return results
+        return connectToMySQL('users_schema').query_db(query, data)
+# the update method will be used when we need to update a friend in our database
+    @classmethod
+    def update(cls, data):
+        query = """UPDATE users SET first_name = %(first_name)s, last_name = %(last_name)s, email = %(email)s, 
+                WHERE id = %(id)s;"""
+        return connectToMySQL('users_shema').query_db(query, data)
