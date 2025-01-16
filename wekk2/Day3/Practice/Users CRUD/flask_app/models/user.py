@@ -7,7 +7,6 @@ class UserCrud:
         self.last_name = data['last_name']
         self.email = data['email']
         self.created_at = data['created_at']
-        self.updated_at = data['']
 # the get_all method will be used when we need to retrieve all the rows of the table 
     @classmethod
     def get_all(cls):
