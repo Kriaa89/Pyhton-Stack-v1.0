@@ -1,5 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.models import ninja
+from flask_app.models.ninja import Ninja
 class Dojo:
     DB = "dojos_and_ninjas_schema"
     def __init__(self, data):
@@ -24,4 +24,22 @@ class Dojo:
         for dojo in results:
             dojos.append(cls(dojo))
             return dojos
-    # 
+# we need to create get_dojo_with_ninjas class method to get all the ninjas that belong to a specific doho
+    @classmethod
+    def get_dojo_with_ninjas(cls, data):
+        query = "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojos_id = ninjas.dojo_id WHERE dojos.id = %(id)s;"
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        # results will be a list of topping objects with the burger attached to each row
+        dojo = cls(results[0])
+        for row in results:
+            ninja_data = {
+                "id": row['ninjas.id'],
+                "first_name": row['first_name'],
+                "last_name": row['last_name'],
+                "age": row['age'],
+                "dojo_id": row['dojo_id'],
+                "created_at": row['created_at'],
+                "updated_at": row['updated_at']
+            }
+            dojo.ninjas.append(Ninja(ninja_data))
+            return dojo
