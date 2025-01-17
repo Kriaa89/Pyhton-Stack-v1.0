@@ -14,4 +14,4 @@ def create_dojo():
         "name": request.form["name"]
     }
     Dojo.save(data)
-    return redirect("/dojos")
+    return redirect("/dojos/")

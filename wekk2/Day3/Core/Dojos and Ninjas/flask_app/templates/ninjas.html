@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>New ninja</h1>
+    <form action="" method="post">
+        <input type="text" name="first_name" required>
+        <input type="text" name="last_name" required>
+        <input type="text" name="age" required>
+        <select name="" id="">
+            {% for dojo in dojos %}
+                <option value="{{ dojo.id }}">{{ dojo.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Create</button>
+    </form>
+    <a href="/ninjas">Home</a>
+</body>
+</html>
