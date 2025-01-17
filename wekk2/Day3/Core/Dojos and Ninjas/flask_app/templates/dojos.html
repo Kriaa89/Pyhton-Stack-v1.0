@@ -13,8 +13,9 @@
     </form>
     <ul>
         {% for dojo in dojos %}
-            <li><a href="/dojos{{ dojo.id }}">{{ dojo.name }}</a></li>
+            <li><a href="/dojos/{{ dojo.id }}">{{ dojo.name }}</a></li>
         {% endfor %}
     </ul>
+    <a href="/ninjas">Add Ninja</a>
 </body>
 </html>

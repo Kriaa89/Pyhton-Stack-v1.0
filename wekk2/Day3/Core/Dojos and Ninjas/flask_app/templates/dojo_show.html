@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>{{ dojo.name }}</h1>
-    <ul>
-        {% for ninja in dojo.ninjas %}
-            <li>{{ ninja.first_name }} {{ ninja.last_name }} {{ ninja.age }}</li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h1 class="my-4">{{ dojo.name }}</h1>
+        <ul class="list-group">
+            {% for ninja in dojo.ninjas %}
+                <li class="list-group-items">{{ ninja.first_name }} {{ ninja.last_name }} {{ ninja.age }}</li>
+            {% endfor %}
+        </ul>
     <a href="/dojos">Home</a>
 </body>
+    </div>
 </html>
