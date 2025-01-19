@@ -1,7 +1,5 @@
-# this file will containe the query for the author table and the class AuthorCrud we gonna use to intercat with database and 
-# and we gonna import this method in the controller file 
-# the methods we need to implement are:
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.models import book
 class Author:
     DB = 'books_schema'
     def __init__(self, data):
@@ -9,7 +7,7 @@ class Author:
         self.name = data['name']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        # we need to have a list in case we want to show books related to the author
+        self.books = []
     
     # this method will save the author in the database
     @classmethod
@@ -18,18 +16,44 @@ class Author:
         return connectToMySQL(cls.DB).query_db(query, data)
     
     @classmethod
-    def get_author_books(cls, data):
-        # this query will give us 
-        query = "SELECT * FROM authors JOIN books ON authors.id = books.author_id WHERE authors.id = %(id)s;"
+    def get_all(cls):
+        query = "SELECT * FROM authors;"
+        results = connectToMySQL(cls.DB).query_db(query)
+        author = []
+        for row in results:
+            author.append(cls(row))
+        return author
+    
+    
+    @classmethod
+    def get_by_id(cls, data):
+        query = "SELECT * FROM authors WHERE id = %(id)s;"
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        return cls(results[0])
+    
+    
+    @classmethod
+    def add_favorite_book(cls, data):
+        query = "INSERT INTO favorits (author_id, book_id) VALUES (%(author_id)s, %(book_id)s);"
+        return connectToMySQL(cls.DB).query_db(query, data)
+    
+    
+    @classmethod
+    def get_favorites_books(cls, data):
+        query = """
+        SELECT * FROM books
+        LEFT JOIN favorites ON books.id = favorites.book_id
+        WHERE favorites.author_id = %(id)s;
+        """
         results = connectToMySQL(cls.DB).query_db(query, data)
         author = cls(results[0])
         for row in results:
-            # now we need to parse author data to make instance of the authors and add them to the list.
-            books_data = {
+            book_data = {
                 'id': row['books.id'],
                 'title': row['title'],
                 'num_of_pages': row['num_of_pages'],
                 'created_at': row['books.created_at'],
                 'updated_at': row['books.updated_at'],
             }
-            author.
+            author.books.append(book.Book(book_data))
+            return author
