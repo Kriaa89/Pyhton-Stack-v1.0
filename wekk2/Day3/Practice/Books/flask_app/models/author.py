@@ -19,10 +19,10 @@ class Author:
     def get_all(cls):
         query = "SELECT * FROM authors;"
         results = connectToMySQL(cls.DB).query_db(query)
-        author = []
+        authors = []
         for row in results:
-            author.append(cls(row))
-        return author
+            authors.append(cls(row))
+        return authors
     
     
     @classmethod
