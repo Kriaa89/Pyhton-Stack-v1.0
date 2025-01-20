@@ -9,7 +9,8 @@
     <h1>Success</h1>
     <ul>
         {% for email in emails %}
-        <li>{{ email.email }} - {{ email.created_at }}</li>
+            <li><h3>Email:</h3> {{ email.email }}</li> <li><h3>Created_at:</h3>{{ email.created_at }}</li>
+        {% endfor %}
     </ul>
 </body>
 </html>

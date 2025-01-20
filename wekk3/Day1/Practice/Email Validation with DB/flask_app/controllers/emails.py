@@ -20,4 +20,4 @@ def create():
 @app.route('/success')
 def success():
     all_emails = Email.get_all()
-    return render_template('success.html', email= all_emails)
+    return render_template('success.html', emails=all_emails)
