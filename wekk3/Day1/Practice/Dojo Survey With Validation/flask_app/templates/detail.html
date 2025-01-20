@@ -4,14 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>detail user</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
-    <h1>submitted info</h1>
-    {% for dojo in dojos %}
-        <p>{{dojo.name}}</p>
-        <p>{{dojo.location}}</p>
-        <p>{{dojo.language}}</p>
-        <p>{{dojo.comment}}</p>
-    {% endfor %}
+    <div class="container mt-5">
+        <h1 class="text-center">submitted info</h1>
+        <div class="mt-4">
+            {% for dojo in dojos %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{dojo.name}}</h5>
+                        <p class="card-text">Location: {{dojo.location}}</p>
+                        <p class="card-text">Language: {{dojo.language}}</p>
+                        <p class="card-text">Comment: {{dojo.comment}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>
