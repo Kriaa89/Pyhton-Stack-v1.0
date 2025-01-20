@@ -10,7 +10,7 @@ def authors():
     return render_template("authors.html", authors = all_athors)
 
 
-@app.route('/authors/create', methods = ['POST'])
+@app.route('/author/create', methods = ['POST'])
 def create_author():
     data = {
         "name": request.form

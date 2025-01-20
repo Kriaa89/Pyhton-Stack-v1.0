@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail user</title>
+</head>
+<body>
+    <h1>submitted info</h1>
+    {% for dojo in dojos %}
+        <p>{{dojo.name}}</p>
+        <p>{{dojo.location}}</p>
+        <p>{{dojo.language}}</p>
+        <p>{{dojo.comment}}</p>
+    {% endfor %}
+</body>
+</html>
