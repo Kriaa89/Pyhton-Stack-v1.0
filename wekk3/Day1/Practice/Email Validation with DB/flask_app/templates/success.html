@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Success</h1>
-    <ul>
-        {% for email in emails %}
-            <li><h3>Email:</h3> {{ email.email }}</li> <li><h3>Created_at:</h3>{{ email.created_at }}</li>
-        {% endfor %}
-    </ul>
+    <div class="container mt-5">
+        <h1 class="text-center">Success</h1>
+        <ul class="list-group mt-4">
+            {% for email in emails %}
+                <li class="list-group-item">
+                        <h3>Email:</h3> {{ email.email }}
+                        <h3>Created at:</h3> {{ email.created_at }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
