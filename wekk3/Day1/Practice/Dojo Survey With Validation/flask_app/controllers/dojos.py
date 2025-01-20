@@ -20,7 +20,7 @@ def create_user():
         'comment': request.form['comment'],
     }
     Dojo.save(data)
-    return redirect('/')
+    return redirect('/results')
 
 
 
