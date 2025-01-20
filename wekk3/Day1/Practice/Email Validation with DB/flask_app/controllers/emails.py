@@ -21,3 +21,9 @@ def create():
 def success():
     all_emails = Email.get_all()
     return render_template('success.html', emails=all_emails)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    Email.delete(id)
+    return redirect('/success')
+

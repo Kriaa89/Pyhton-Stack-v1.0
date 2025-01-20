@@ -14,6 +14,7 @@
                 <li class="list-group-item">
                         <h3>Email:</h3> {{ email.email }}
                         <h3>Created at:</h3> {{ email.created_at }}
+                    <a href="/delete/{{email.id}}" class="btn btn-danger">Delete</a>
                 </li>
             {% endfor %}
         </ul>
