@@ -10,22 +10,21 @@ class Email:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         
-        
-        
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO validations (email) VALUES (%(email)s);"
+        query = "INSERT INTO validation (email) VALUES (%(email)s);"
         return connectToMySQL(cls.DB).query_db(query, data)
-        
-        
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM validations;"
+        query = "SELECT * FROM validation;"
         results = connectToMySQL(cls.DB).query_db(query)
         emails = []
-        for emails in results:
+        for email in results:
             emails.append(cls(email))
         return emails
+    
+    
+    # this is a static method to validate the email
     @staticmethod
     def validate_email(email):
         is_valid = True
