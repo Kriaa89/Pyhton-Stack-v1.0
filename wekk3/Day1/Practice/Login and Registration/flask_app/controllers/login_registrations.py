@@ -43,3 +43,9 @@ def login():
             # # here we are storing the user last name in the session
             session['last_name']=user_in_db.last_name
             return redirect('/success')
+        
+# logout route
+@app.route('/logout', methods=['POST'])
+def logout():
+    session.clear()
+    return redirect('/')
