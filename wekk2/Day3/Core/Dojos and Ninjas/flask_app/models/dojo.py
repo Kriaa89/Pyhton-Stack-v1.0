@@ -22,14 +22,16 @@ class Dojo:
         for dojo in results:
             dojos.append(cls(dojo))
         return dojos
-    
+# this is a class method to get all the ninjas in a specific dojo
     @classmethod
     def get_dojos_with_ninjas(cls, data):
         query = """
         SELECT * FROM dojos
         LEFT JOIN ninjas ON ninjas.dojo_id = dojos.id WHERE dojos.id = %(id)s;"""
         results = connectToMySQL(cls.DB).query_db(query, data)
+        # here we are creating an instance of a dojo
         dojo = cls(results[0])
+        # here we use for loop to iterate throught the results and append the ninjas to dojo
         for row in results:
             ninja_data = {
                 "id" : row['ninjas.id'],
