@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>email validation</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Login and Registration</h1>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h2 class="">Register</h2>
+                <form action="/register" method="post">
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" name="first_name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" name="last_name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="text" name="password" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm password">Confirm password</label>
+                        <input type="text" name="confirm_password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2>Login</h2>
+                <form action="/login" method="post">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="text" name="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+        {% with messages = get_flashed_messages() %}<!-- declare a variable called messages -->
+            {% if messages %}                           <!-- check if there are any messages -->
+                 {% for message in messages %}            <!-- loop through the messages -->
+                      <p class="alert alert-danger">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                 {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
