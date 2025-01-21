@@ -55,7 +55,7 @@ class User:
         return is_valid
         
     @staticmethod
-    def encypt_string(text):
+    def encrypt_string(text):
         encrypted_string=bcrypt.generate_password_hash(text)
         return encrypted_string
     
