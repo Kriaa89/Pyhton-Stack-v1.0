@@ -9,14 +9,25 @@
 <body>
     <div class="container">
         <h1 class="my-4">{{ dojo.name }}</h1>
-        <ul class="list-group">
-            {% for ninja in dojo.ninjas %}
-                <li class="list-group-items"><h4>First Name:</h4> {{ ninja.first_name }}</li>
-                <li class="list-group-items"><h4>Last Name:</h4> {{ ninja.last_name }}</li>
-                <li class="list-group-items"><h4>Age:</h4> {{ ninja.age }}</li>
-            {% endfor %}
-        </ul>
-    <a href="/dojos">Home</a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ninja in dojo.ninjas %}
+                <tr>
+                    <td>{{ ninja.first_name }}</td>
+                    <td>{{ ninja.last_name }}</td>
+                    <td>{{ ninja.age }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <a href="/dojos" class="btn btn-primary mt-4">Home</a>
 </body>
     </div>
 </html>
