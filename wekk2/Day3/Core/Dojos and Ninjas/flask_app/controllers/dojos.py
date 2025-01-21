@@ -4,6 +4,7 @@ from flask_app.models.dojo import Dojo
 from flask_app.models.ninja import Ninja
 
 
+# 
 @app.route('/')
 def index():
     return redirect("/dojos")
@@ -29,5 +30,5 @@ def show_dojo(dojo_id):
     data = {
         "id": dojo_id
     }
-    dojo = Dojo.get_dojo_with_ninjas(data)
+    dojo = Dojo.get_dojos_with_ninjas(data)
     return render_template("dojo_show.html", dojo=dojo)

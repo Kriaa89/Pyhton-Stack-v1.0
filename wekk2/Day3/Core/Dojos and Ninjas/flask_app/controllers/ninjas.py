@@ -3,12 +3,15 @@ from flask_app import app
 from flask_app.models.dojo import Dojo
 from flask_app.models.ninja import Ninja
 
+
+# this route will render a form to create a new dojo
 @app.route("/ninjas")
 def ninjas():
     dojos = Dojo.get_all()
     return render_template("ninjas.html", dojos=dojos)
 
 
+# this route will create a new dojo
 @app.route("/ninjas/create", methods=["POST"])
 def create_ninja():
     data = {

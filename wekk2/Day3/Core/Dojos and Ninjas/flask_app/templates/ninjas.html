@@ -24,12 +24,12 @@
             </div>
             <select name="dojo_id"  class="form-control">
                 {% for dojo in dojos %}
-                    <option value="{{dojo.id}}">{{dojo.name}}</option>
+                    <option value="{{ dojo.id }}">{{dojo.name}}</option>
                 {% endfor %}
             </select>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
-        <a href="/ninjas">Home</a>
+        <a href="/dojos">Home</a>
     </div>
 </body>
 </html>

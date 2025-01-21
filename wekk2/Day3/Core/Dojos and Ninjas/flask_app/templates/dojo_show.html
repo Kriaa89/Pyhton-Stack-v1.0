@@ -11,7 +11,9 @@
         <h1 class="my-4">{{ dojo.name }}</h1>
         <ul class="list-group">
             {% for ninja in dojo.ninjas %}
-                <li class="list-group-items">{{ ninja.first_name }} {{ ninja.last_name }} {{ ninja.age }}</li>
+                <li class="list-group-items"><h4>First Name:</h4> {{ ninja.first_name }}</li>
+                <li class="list-group-items"><h4>Last Name:</h4> {{ ninja.last_name }}</li>
+                <li class="list-group-items"><h4>Age:</h4> {{ ninja.age }}</li>
             {% endfor %}
         </ul>
     <a href="/dojos">Home</a>
