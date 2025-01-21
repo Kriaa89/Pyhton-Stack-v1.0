@@ -44,4 +44,4 @@ class Dojo:
                 "updated_at" : row['updated_at'],
             }
             dojo.ninjas.append(ninja.Ninja(ninja_data))
-            return dojo
+        return dojo

@@ -31,4 +31,5 @@ def show_dojo(dojo_id):
         "id": dojo_id
     }
     dojo = Dojo.get_dojos_with_ninjas(data)
+    print("dojo :",dojo)
     return render_template("dojo_show.html", dojo=dojo)
