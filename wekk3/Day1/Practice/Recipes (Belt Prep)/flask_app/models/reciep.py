@@ -1,5 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-
+from flask import flash
 class Recipe:
     DB = 'reciepie_schema'
     def __init__(self, data):
@@ -34,3 +34,17 @@ class Recipe:
     def delete(cls, data):
         query = "DELETE FROM recipes WHERE id = %(id)s;"
         return connectToMySQL(cls.DB).query_db(query, data)
+    
+    @staticmethod
+    def validate_recipe(data):
+        is_valid = True
+        if len(data['name']) < 3:
+            is_valid = False
+            flash("Name must be at least 3 characters.")
+        if len(data['description']) < 3:
+            is_valid = False
+            flash("description must be at least 3 characters.")
+        if len(data['instruction']) < 3:
+            is_valid = False
+            flash("instruction must be at least 3 characters.")
+        return is_valid
