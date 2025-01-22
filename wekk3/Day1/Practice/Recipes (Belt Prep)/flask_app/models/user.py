@@ -1,5 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask import flash
+
 
 class User:
     def __init__(self, data):
