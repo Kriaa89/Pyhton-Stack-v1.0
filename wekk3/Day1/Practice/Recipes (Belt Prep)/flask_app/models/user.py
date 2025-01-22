@@ -51,7 +51,7 @@ class User:
     @staticmethod
     def validate_registration(data):
         is_valid = True
-        if len(data["firt_name"]) < 2:
+        if len(data["first_name"]) < 2:
             is_valid = False
             flash("First name must be at least 2 characters.")
         if len(data["last_name"]) < 2:
