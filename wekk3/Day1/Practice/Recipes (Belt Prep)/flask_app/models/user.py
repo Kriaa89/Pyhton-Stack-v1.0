@@ -1,6 +1,8 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 from flask_app import EMAIL_REGEX, bcrypt
+from flask_app.models.reciep import Recipe
+
 class User:
     DB = 'reciepie_schema'
     def __init__(self, data):
@@ -25,6 +27,26 @@ class User:
         if len(results) < 1:
             return False
         return cls(results[0])
+    
+    @classmethod
+    def get_user_with_recipes(cls, data):
+        query = "SELECT * FROM users LEFT JOIN recipes ON recipes.user_id = users.id WHERE users.id = %(id)s;"
+        results = connectToMySQL(cls.DB).query_db(query,data)
+        user = cls(results[0])
+        for row_db in results:
+            recipe_data = {
+                "id": row_db["recipes.id"],
+                "name": row_db["name"],
+                "user_id": row_db["user_id"],
+                "description": row_db["description"],
+                "instruction": row_db["instruction"],
+                "under_30": row_db["under_30"],
+                "created_at": row_db["recipes.created_at"],
+                "updated_at": row_db["updated_at"]
+            }
+            user.recipes.append(Recipe(recipe_data))
+        return user
+    
     
     @staticmethod
     def validate_registration(data):
