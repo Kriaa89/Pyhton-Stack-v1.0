@@ -25,6 +25,14 @@ class Recipe:
         for row in results:
             recipes.append(cls(row))
         return recipes
+    
+    @classmethod
+    def get_one(cls, data):
+        query = "SELECT * FROM recipes WHERE id = %(id)s;"
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        return cls(results[0])
+    
+    
     @classmethod
     def update(cls, data):
         query = "UPDATE recipes SET name = %(name)s, desciption = %(desciption)s, instruction = %(instruction)s, under_30 = %(under_30)s, updated_at = NOW() created_at = NOW() WHERE id = %(id)s;"

@@ -17,7 +17,7 @@ class User:
     
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO users(first_name, last_name, email, password) VALUES(%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
+        query = "INSERT INTO users(first_name, last_name, email, password, updated_at, created_at) VALUES(%(first_name)s, %(last_name)s, %(email)s, %(password)s, NOW(), NOW());"
         return connectToMySQL(cls.DB).query_db(query, data)
     
     @classmethod
@@ -42,7 +42,7 @@ class User:
                 "instruction": row_db["instruction"],
                 "under_30": row_db["under_30"],
                 "created_at": row_db["recipes.created_at"],
-                "updated_at": row_db["updated_at"]
+                "updated_at": row_db["recipes.updated_at"]
             }
             user.recipes.append(Recipe(recipe_data))
         return user
