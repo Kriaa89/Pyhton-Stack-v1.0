@@ -3,33 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>all posted </title>
+    <title>All Recipes</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Welcom {{ session.first_name }}</h1>
-        <a href="/recipes/new">Add a New a recipes</a>
+        <h1 class="text-center">Welcome {{ user.first_name }}</h1>
+        <a href="/recipes/new">Add a New Recipe</a>
         <a href="/logout">Logout</a>
         <table class="table table-striped mt-4">
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Under 30 Mintes</th>
+                    <th>Under 30 Minutes</th>
                     <th>Posted By</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for recipe in recipes %}
                 <tr>
                     <td>{{ recipe.name }}</td>
-                    <td>{{ 'Yes' if recipe.under_30 else 'No'}}</td>
+                    <td>{{ 'Yes' if recipe.under_30 else 'No' }}</td>
                     <td>{{ recipe.first_name }} {{ recipe.last_name }}</td>
                     <td>
                         <a href="/recipes/{{ recipe.id }}" class="btn btn-info">View</a>
                         {% if recipe.user_id == session['user_id'] %}
-                        <a href="/recipes/{{ recipe.id }}/edit">Edit</a>
-                        <a href="/recipes/{{ recipe.id }}/delete">Delete</a>
+                        <a href="/recipes/{{ recipe.id }}/edit" class="btn btn-warning">Edit</a>
+                        <a href="/recipes/{{ recipe.id }}/delete" class="btn btn-danger">Delete</a>
                         {% endif %}
                     </td>
                 </tr>

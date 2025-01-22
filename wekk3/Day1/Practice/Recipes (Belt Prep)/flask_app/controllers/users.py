@@ -1,6 +1,7 @@
 from flask import render_template, redirect, request, session, flash
 from flask_app import app
 from flask_app.models.user import User
+from flask_app.models.reciep import Recipe
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -19,12 +20,11 @@ def register():
         "first_name": request.form['first_name'],
         "last_name": request.form['last_name'],
         "email": request.form['email'],
-        "password" : pw_hash
+        "password": pw_hash
     }
     user_id = User.save(data)
     session['user_id'] = user_id
     return redirect('/')
-
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -39,18 +39,19 @@ def login():
         flash("Invalid Email/Password")
         return redirect('/')
     session['user_id'] = user_in_db.id
-    return redirect('/recipes/new')
+    return redirect('/dashboard')
 
-app.route('/dashborde')
-def dashborde():
+@app.route('/dashboard')
+def dashboard():
     if 'user_id' not in session:
         return redirect('/')
     data = {
         "id": session['user_id']
     }
     user = User.get_user_with_recipes(data)
-    return render_template('dashborde.html', user = user )
-
+    recipes = Recipe.get_all()
+    print(recipes)
+    return render_template('table_recipe.html', user=user, recipes=recipes)
 
 @app.route('/logout')
 def logout():

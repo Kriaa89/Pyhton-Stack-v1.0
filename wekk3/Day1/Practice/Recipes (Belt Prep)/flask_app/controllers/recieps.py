@@ -22,7 +22,7 @@ def create_recipe():
             "under_30": request.form["under_30"],          
     }
     Recipe.save(data)
-    return redirect('/dashborde')
+    return redirect('/dashboard')
     
 @app.route('/recipes/<int:id>')
 def show_recipe(id):
@@ -58,7 +58,7 @@ def update_recipe(id):
             "under_30": request.form["under_30"],  
         }
         Recipe.update(data)
-        return redirect('/dashborde')
+        return redirect('/dashboard')
     
     
 @app.route('/recipes/delete/<int:id>/delete')
@@ -69,4 +69,4 @@ def deleteu_recipe(id):
         "id": id
     }
     Recipe.delete(data)
-    return redirect('/dashborde')
+    return redirect('/dashboard')
