@@ -40,6 +40,12 @@ class Recipe:
         query = "DELETE FROM recipes WHERE id = %(id)s;"
         return connectToMySQL(cls.DB).query_db(query, data)
     
+    # 
+    @classmethod
+    def get_recipes_with_
+    
+    
+    
     @staticmethod
     def validate_recipe(data):
         is_valid = True

@@ -46,6 +46,7 @@ def edit_recipe(id):
     }
     
     recipe = Recipe.get_one(data)
+    
     return render_template('edit.html', recipe=recipe)
 
 # this route will update the recipe

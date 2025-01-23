@@ -50,7 +50,6 @@ def dashboard():
     }
     user = User.get_user_with_recipes(data)
     recipes = Recipe.get_all()
-    print(recipes)
     return render_template('table_recipe.html', user=user, recipes=recipes)
 
 @app.route('/logout')
