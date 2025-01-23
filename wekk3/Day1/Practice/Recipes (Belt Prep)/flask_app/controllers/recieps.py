@@ -33,7 +33,7 @@ def show_recipe(id):
         "id" : id
     }
     recipe = Recipe.get_one(data)
-    user = User.get_user_with_recipes({"id": session['user_id']})
+    user = User.get_by_id({"id": session['user_id']})
     return render_template('detail_recipe.html', recipe=recipe, user=user)
 
 # this route will render the edit page 
