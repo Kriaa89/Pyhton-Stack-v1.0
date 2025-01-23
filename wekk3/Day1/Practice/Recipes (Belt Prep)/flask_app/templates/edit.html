@@ -16,19 +16,17 @@
             </div>
             <div class="form-group">
                 <label for="name">Desciption</label>
-                <textarea name="description" id="description" class="form-control" required>{{ recipe.desciption }}</textarea >
+                <textarea name="description" id="description" class="form-control" required>{{ recipe.description }}</textarea >
             </div>
             <div class="form-group">
                 <label for="name">Instruction</label>
                 <textarea name="instruction" id="instruction" class="form-control" required>{{ recipe.instruction }}</textarea>
             </div>
-            <div class="form-group">
-                <label for="under_30">Under 30 minute</label>
-                <select name="under_30">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label for="under_30">Under 30 Minutes</label>
+                    <input type="radio" value="1" name="under_30" required> Yes
+                    <input type="radio" value="0" name="under_30" required> No
+                </div>
             <button type="submit" class="btn btn-primary">Update Recipies</button>
         </form>
     </div>

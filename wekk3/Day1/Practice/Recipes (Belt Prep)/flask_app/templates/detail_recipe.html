@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail recipies</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-start">Welcome, {{ user.first_name }}</h1>
+        <h6 class="text-end">Posted By: {{user.first_name}}</h6>
+
+        
+        <h5 class="text-start">{{ recipe.name }}</h5>
+        <p>Desciption: {{recipe.description}}</p>
+        <p>Instruction: {{recipe.instruction}}</p>
+        <p>Under 30 Minutes ? {{recipe.under_30}}</p>
+        <p>date Made: {{ recipe.created_at}}</p>
+    </div>
+</body>
+</html>

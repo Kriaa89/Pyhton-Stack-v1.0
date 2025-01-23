@@ -27,6 +27,13 @@ class User:
         if len(results) < 1:
             return False
         return cls(results[0])
+    @classmethod
+    def get_by_id(cls, data):
+        query = "SELECT * FROM users WHERE id = %(id)s;"
+        return connectToMySQL(cls.DB).query_db(query, data)
+    
+    
+    
     
     @classmethod
     def get_user_with_recipes(cls, data):

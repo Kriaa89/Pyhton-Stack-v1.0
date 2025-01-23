@@ -1,6 +1,7 @@
-from flask import render_template, redirect, request, session, flash
+from flask import render_template, redirect, request, session, flash, sessions
 from flask_app import app
 from flask_app.models.reciep import Recipe
+from flask_app.models.user import User
 
 @app.route('/recipes/new')
 def new_recipe():
@@ -32,7 +33,8 @@ def show_recipe(id):
         "id" : id
     }
     recipe = Recipe.get_one(data)
-    return render_template('detail_recipe.html', recipe=recipe)
+    user = User.get_user_with_recipes({"id": session['user_id']})
+    return render_template('detail_recipe.html', recipe=recipe, user=user)
 
 # this route will render the edit page 
 @app.route('/recipes/<int:id>/edit' )
@@ -42,6 +44,7 @@ def edit_recipe(id):
     data = {
         "id": id
     }
+    
     recipe = Recipe.get_one(data)
     return render_template('edit.html', recipe=recipe)
 
@@ -51,7 +54,7 @@ def update_recipe(id):
     if 'user_id' not in session:
         return redirect('/')
     if not Recipe.validate_recipe(request.form):
-        return redirect(f'/recipes/{id}/edit')
+        return redirect(f'/recipes/{id}/edit') # redirect back to the page to fix the validation errors
     data = {
         "id":id,
         "name": request.form["name"],
