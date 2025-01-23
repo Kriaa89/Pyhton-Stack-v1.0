@@ -34,7 +34,7 @@ def show_recipe(id):
     data = {
         "id" : id
     }
-    recipe = Recipe.get_one(data)
+    recipe = Recipe.get_one_with_user(data)
     user = User.get_by_id({"id": session['user_id']})
     return render_template('detail_recipe.html', recipe=recipe, user=user)
 
@@ -70,7 +70,7 @@ def update_recipe(id):
     Recipe.update(data)
     return redirect('/dashboard')
     
-    
+
 @app.route('/recipes/delete/<int:id>/delete')
 def delete_recipe(id):
     if 'user_id' not in session:

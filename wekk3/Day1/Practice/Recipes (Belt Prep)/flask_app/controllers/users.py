@@ -45,9 +45,9 @@ def login():
 def dashboard():
     if 'user_id' not in session:
         return redirect('/')
-    user = User.get_by_id({"id": session['user_id']})
+    log_user = User.get_by_id({"id": session['user_id']})
     recipes = Recipe.get_all()
-    return render_template('table_recipe.html', user=user, recipes=recipes)
+    return render_template('table_recipe.html', log_user=log_user, recipes=recipes)
 
 @app.route('/logout')
 def logout():
