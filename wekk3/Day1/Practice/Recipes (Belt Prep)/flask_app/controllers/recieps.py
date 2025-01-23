@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request, session, flash, sessions
+from flask import render_template, redirect, request, session, flash
 from flask_app import app
 from flask_app.models.reciep import Recipe
 from flask_app.models.user import User
@@ -15,12 +15,14 @@ def create_recipe():
         return redirect('/')
     if not Recipe.validate_recipe(request.form):
         return redirect('/recipes/new')
+        
     data = {
-            "user_id": session["user_id"],
-            "name": request.form["name"],
-            "description": request.form["description"],
-            "instruction": request.form["instruction"],
-            "under_30": request.form["under_30"],          
+        "name": request.form["name"],
+        "description": request.form["description"],
+        "instruction": request.form["instruction"],
+        "under_30": request.form["under_30"],
+        "cook_date": request.form["cook_date"],
+        "user_id": session["user_id"]
     }
     Recipe.save(data)
     return redirect('/dashboard')
@@ -50,18 +52,20 @@ def edit_recipe(id):
     return render_template('edit.html', recipe=recipe)
 
 # this route will update the recipe
-@app.route('/recipes/<int:id>/updates/', methods=['POST'])
+@app.route('/recipes/<int:id>/update', methods=['POST'])
 def update_recipe(id):
     if 'user_id' not in session:
         return redirect('/')
     if not Recipe.validate_recipe(request.form):
-        return redirect(f'/recipes/{id}/edit') # redirect back to the page to fix the validation errors
+        return redirect(f'/recipes/{id}/edit')
+        
     data = {
-        "id":id,
+        "id": id,
         "name": request.form["name"],
         "description": request.form["description"],
         "instruction": request.form["instruction"],
-        "under_30": request.form["under_30"],  
+        "under_30": request.form["under_30"],
+        "cook_date": request.form["cook_date"]
     }
     Recipe.update(data)
     return redirect('/dashboard')

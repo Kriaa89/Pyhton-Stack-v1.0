@@ -45,10 +45,7 @@ def login():
 def dashboard():
     if 'user_id' not in session:
         return redirect('/')
-    data = {
-        "id": session['user_id']
-    }
-    user = User.get_user_with_recipes(data)
+    user = User.get_by_id({"id": session['user_id']})
     recipes = Recipe.get_all()
     return render_template('table_recipe.html', user=user, recipes=recipes)
 

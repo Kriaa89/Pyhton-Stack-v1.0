@@ -28,10 +28,10 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="text" name="password" class="form-control">
+                        <input type="password" name="password" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="confirm password">Confirm password</label>
+                        <label for="confirm_password">Confirm Password</label>
                         <input type="password" name="confirm_password" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary">Register</button>
@@ -42,7 +42,7 @@
                 <form action="/login" method="post">
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" name="email" class="form-control">
+                        <input type="email" name="email" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -52,11 +52,13 @@
                 </form>
             </div>
         </div>
-        {% with messages = get_flashed_messages() %}<!-- declare a variable called messages -->
-            {% if messages %}                           <!-- check if there are any messages -->
-                 {% for message in messages %}            <!-- loop through the messages -->
-                      <p class="alert alert-danger">{{message}}</p>                   <!-- display each message in a paragraph tag -->
-                 {% endfor %}
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="mt-3">
+                    {% for message in messages %}
+                        <p class="alert alert-danger">{{ message }}</p>
+                    {% endfor %}
+                </div>
             {% endif %}
         {% endwith %}
     </div>
