@@ -25,12 +25,12 @@
                 <tr>
                     <td>{{ recipe.name }}</td>
                     <td>{{ 'Yes' if recipe.under_30 else 'No' }}</td>
-                    <td>{{ recipe.first_name }} {{ recipe.last_name }}</td>
+                    <td>{{ user.first_name }} {{ user.last_name }}</td>
                     <td>
                         <a href="/recipes/{{ recipe.id }}" class="btn btn-info">View</a>
                         {% if recipe.user_id == session['user_id'] %}
                         <a href="/recipes/{{ recipe.id }}/edit" class="btn btn-warning">Edit</a>
-                        <a href="/recipes/{{ recipe.id }}/delete" class="btn btn-danger">Delete</a>
+                        <a href="/recipes/delete/{{ recipe.id }}/delete" class="btn btn-danger">Delete</a>
                         {% endif %}
                     </td>
                 </tr>

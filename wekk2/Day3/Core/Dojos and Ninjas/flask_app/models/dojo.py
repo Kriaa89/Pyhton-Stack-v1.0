@@ -19,10 +19,10 @@ class Dojo:
     def get_all(cls):
         query = "SELECT * FROM dojos;"
         results = connectToMySQL('dojos_and_ninjas_schema').query_db(query)
-        dojos = []
+        dojos2 = []
         for dojo in results:
-            dojos.append(cls(dojo))
-        return dojos
+            dojos2.append(cls(dojo))
+        return dojos2
 # this is a class method to get all the ninjas in a specific dojo
     @classmethod
     def get_dojos_with_ninjas(cls, data):

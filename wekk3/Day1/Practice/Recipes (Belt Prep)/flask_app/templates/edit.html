@@ -9,7 +9,7 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Edit recipe</h1>
-        <form action="/recipes/update/{{ recipe.id}}" method="POST">
+        <form action="/recipes/updates/{{ recipe.id }}" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" name="" value="{{ recipe.name}}" class="form-control">
@@ -25,7 +25,7 @@
             <div class="form-group">
                 <label for="name">Under 30 minute</label>
                 <select name="under_300">
-                    <option value="1" {{}}>Yes</option>
+                    <option value="1">Yes</option>
                     <option value="0">No</option>
                 </select>
             </div>
