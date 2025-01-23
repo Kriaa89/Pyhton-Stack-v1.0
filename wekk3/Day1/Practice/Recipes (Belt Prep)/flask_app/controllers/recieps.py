@@ -35,7 +35,7 @@ def show_recipe(id):
     return render_template('detail_recipe.html', recipe=recipe)
 
 # this route will render the edit page 
-@app.route('/recipes/edit/<int:id>' )
+@app.route('/recipes/<int:id>/edit' )
 def edit_recipe(id):
     if 'user_id' not in session:
         return redirect('/')
@@ -46,12 +46,12 @@ def edit_recipe(id):
     return render_template('edit.html', recipe=recipe)
 
 # this route will update the recipe
-@app.route('/recipes/updates/<int:id>', methods=['POST'])
+@app.route('/recipes/<int:id>/updates/', methods=['POST'])
 def update_recipe(id):
     if 'user_id' not in session:
         return redirect('/')
     if not Recipe.validate_recipe(request.form):
-        return redirect(f'/recipes/edit/{id}')
+        return redirect(f'/recipes/{id}/edit')
     data = {
         "id":id,
         "name": request.form["name"],

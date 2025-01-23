@@ -32,7 +32,7 @@ class Recipe:
         return cls(results[0])
     @classmethod
     def update(cls, data):
-        query = "UPDATE recipes SET name = %(name)s, desciption = %(desciption)s, instruction = %(instruction)s, under_30 = %(under_30)s, updated_at = NOW() created_at = NOW() WHERE id = %(id)s;"
+        query = "UPDATE recipes SET name=%(name)s, desciption=%(desciption)s, instruction=%(instruction)s, under_30=%(under_30)s  WHERE id = %(id)s;"
         return connectToMySQL(cls.DB).query_db(query, data)
     
     @classmethod

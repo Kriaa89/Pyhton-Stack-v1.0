@@ -9,26 +9,27 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Edit recipe</h1>
-        <form action="/recipes/updates/{{ recipe.id }}" method="POST">
+        <form action="/recipes/{{ recipe.id }}/updates/" method="POST">
             <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" name="" value="{{ recipe.name}}" class="form-control">
+                <input type="text" name="name" value="{{ recipe.name }}" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="name">Desciption</label>
-                <textarea name="desciption" id="desciption" class="form-control">{{ recipe.desciption }}</textarea>
+                <textarea name="description" id="description" class="form-control" required>{{ recipe.desciption }}</textarea >
             </div>
             <div class="form-group">
                 <label for="name">Instruction</label>
-                <textarea name="instruction" id="instruction" class="form-control">{{ recipe.instruction }}</textarea>
+                <textarea name="instruction" id="instruction" class="form-control" required>{{ recipe.instruction }}</textarea>
             </div>
             <div class="form-group">
-                <label for="name">Under 30 minute</label>
-                <select name="under_300">
+                <label for="under_30">Under 30 minute</label>
+                <select name="under_30">
                     <option value="1">Yes</option>
                     <option value="0">No</option>
                 </select>
             </div>
+            <button type="submit" class="btn btn-primary">Update Recipies</button>
         </form>
     </div>
 </body>
