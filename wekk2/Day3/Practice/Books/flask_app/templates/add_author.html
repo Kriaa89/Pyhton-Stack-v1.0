@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{author.name}}</h1>
+    <h2>Favorite Book</h2>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>number of pages</th>
+        </tr>
+        {% for book in favorite_books %}
+        <tr>
+            <td>{{ book.title}}</td>
+            <td>{{ book.num_of_pages }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Add a Favorite Book</h2>
+    <form action="/authors/{{ author.id }}/add_favorite" method="POST">
+        <select name="book_id" id="">
+            {% for book in all_books %}
+            <option value="{{ book.id }}">{{ book.title }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Add Favorite</button>
+    </form>
+</body>
+</html>

@@ -21,7 +21,8 @@ class Author:
         results = connectToMySQL(cls.DB).query_db(query)
         authors = []
         for row in results:
-            authors.append(cls(row))
+            vaza = cls(row)
+            authors.append(vaza)
         return authors
     
     
@@ -55,5 +56,5 @@ class Author:
                 'created_at': row['books.created_at'],
                 'updated_at': row['books.updated_at'],
             }
-            author.books.append(book.Book(book_data))
+            author.books.append(Book(book_data))
             return author

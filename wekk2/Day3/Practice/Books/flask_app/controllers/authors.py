@@ -3,6 +3,10 @@ from flask_app import app
 from flask_app.models.author import Author
 from flask_app.models.book import Book
 
+@app.route('/')
+def index():
+    return render_template('authors.html')
+
 
 @app.route('/authors')
 def authors():

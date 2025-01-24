@@ -15,6 +15,7 @@ class Book:
         query = "INSERT INTO books(title, num_of_pages, created_at, updated_at) VALUES (%(title)s, %(num_of_pages)s, NOW(), NOW());"
         return connectToMySQL(cls.DB).query_db(query, data)
     
+    
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM books;"
@@ -54,4 +55,4 @@ class Book:
                 'updated_at': row['authors.updated_at'],
             }
             book.authors.append( author.Author(author_data))
-            return book
+        return book
