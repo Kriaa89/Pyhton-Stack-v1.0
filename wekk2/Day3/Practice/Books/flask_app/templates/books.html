@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Books</h1>
+    <h2>Add a new book </h2>
+    <form action="/books/create" method="POST">
+        <Label for="title">Title</Label>
+        <input type="text" name="title" id="title">
+        <label for="num_of_pages">Number of pages</label>
+        <input type="text" name="num_of_pages">
+        <button type="submit"></button>
+    </form>
+
+    <h1>All Books</h1>
+    <table>
+        <tr>
+            <th>
+                Title
+            </th>
+        </tr>
+        {% for book in books %}
+        <td> <a href="/books/{{ book.id }}">{{ book.title }}</a></td>
+    </table>
+</body>
+</html>

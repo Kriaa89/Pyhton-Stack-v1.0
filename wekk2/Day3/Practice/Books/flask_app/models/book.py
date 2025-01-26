@@ -1,7 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask_app.models import author
 class Book:
-    DB = 'books_shcema'
+    DB = 'books_schema'
     def __init__(self, data):
         self.id = data['id']
         self.title = data['title']
@@ -33,26 +33,43 @@ class Book:
     
     
     @classmethod
-    def add_favorite_athor(cls, data):
-        query = "INSERT INTO favorits (author_id, book_id) VALUES (%(author_id)s, %(book_id)s);"
+    def add_favorite_author(cls, data):
+        query = "INSERT INTO favorites (author_id, book_id) VALUES (%(author_id)s, %(book_id)s);"
         return connectToMySQL(cls.DB).query_db(query, data)
     
     
     @classmethod
     def get_favorites_authors(cls, data):
         query = """
-        SELECT * FROM auhtors
-        LEFT JOIN favorites ON author.id = favorites.author_id
-        WHERE favorites.book_id = %(id)s;
+        SELECT * FROM authors
+        LEFT JOIN favorites ON authors.id = favorites.author_id
+        LEFT JOIN books ON favorites.book_id = books.id
+        WHERE books.id = %(id)s;
         """
         results = connectToMySQL(cls.DB).query_db(query, data)
-        book = cls(results[0])
+        if not results:
+            return []
+        book = cls.get_by_id(data)
         for row in results:
             author_data = {
                 'id': row['authors.id'],
                 'name': row['name'],
                 'created_at': row['authors.created_at'],
-                'updated_at': row['authors.updated_at'],
+                'updated_at': row['authors.updated_at']
             }
-            book.authors.append( author.Author(author_data))
-        return book
+            book.authors.append(author.Author(author_data))
+        return book.authors
+
+    @classmethod
+    def get_unfavorited_books(cls, data):
+        query = """
+        SELECT * FROM books 
+        WHERE books.id NOT IN (
+            SELECT book_id FROM favorites 
+            WHERE author_id = %(id)s
+        );"""
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        books = []
+        for row in results:
+            books.append(cls(row))
+        return books

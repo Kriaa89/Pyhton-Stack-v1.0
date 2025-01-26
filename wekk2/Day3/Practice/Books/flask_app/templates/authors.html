@@ -3,14 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Authors</title>
 </head>
 <body>
     <h1>New Author</h1>
     <form action="/author/create" method="POST">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name">
-        <button type="submit">create</button>
+        <button type="submit">Create</button>
     </form>
+    <h2>All Authors</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+        </tr>
+        {% for author in authors %}
+        <tr>
+            <td><a href="/authors/{{ author.id }}">{{ author.name }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
